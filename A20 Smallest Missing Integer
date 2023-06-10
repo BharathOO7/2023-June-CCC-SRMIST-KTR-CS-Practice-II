@@ -1,0 +1,28 @@
+def find_smallest_missing_positive(nums):
+    n = len(nums)
+
+    # Step 1: Move all positive integers to their correct positions
+    i = 0
+    while i < n:
+        if 1 <= nums[i] <= n and nums[nums[i] - 1] != nums[i]:
+            # Swap the current number to its correct position
+            nums[nums[i] - 1], nums[i] = nums[i], nums[nums[i] - 1]
+        else:
+            i += 1
+
+    # Step 2: Find the first missing positive integer
+    for i in range(n):
+        if nums[i] != i + 1:
+            return i + 1
+
+    # Step 3: All positive integers from 1 to N are present, so the smallest missing positive is N + 1
+    return n + 1
+
+
+# Read input
+n = int(input())
+nums = list(map(int, input().split()))
+
+# Call the function and print the result
+result = find_smallest_missing_positive(nums)
+print(result)
