@@ -1,0 +1,21 @@
+def max_consecutive_ones(nums):
+    max_count = 0  # Variable to store the maximum consecutive ones count
+    count = 0  # Variable to store the current consecutive ones count
+
+    for num in nums:
+        if num == 1:
+            count += 1
+            max_count = max(max_count, count)
+        else:
+            count = 0
+
+    return max_count
+
+
+# Read input
+n = int(input())
+nums = list(map(int, input().split()))
+
+# Call the function and print the result
+result = max_consecutive_ones(nums)
+print(result)
