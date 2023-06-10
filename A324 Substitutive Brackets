@@ -1,0 +1,29 @@
+def is_valid(s):
+    low = 0  # Lower bound of open parentheses count
+    high = 0  # Upper bound of open parentheses count
+
+    for char in s:
+        if char == '(':
+            low += 1
+            high += 1
+        elif char == ')':
+            if low > 0:
+                low -= 1
+            high -= 1
+        elif char == '*':
+            if low > 0:
+                low -= 1
+            high += 1
+
+        if high < 0:
+            return "false"
+
+    return "true" if low == 0 else "false"
+
+
+# Read input
+s = input()
+
+# Call the function and print the result
+result = is_valid(s)
+print(result)
