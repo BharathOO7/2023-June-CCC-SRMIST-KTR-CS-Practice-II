@@ -1,0 +1,28 @@
+def max_subarray_sum(nums):
+    # Initialize variables
+    max_sum = float('-inf')  # Initialize with negative infinity
+    current_sum = 0
+
+    # Iterate through the array
+    for num in nums:
+        # Update the current sum by adding the current element
+        current_sum += num
+
+        # Update the max sum if the current sum is greater
+        max_sum = max(max_sum, current_sum)
+
+        # If the current sum becomes negative, reset it to zero
+        if current_sum < 0:
+            current_sum = 0
+
+    return max_sum
+
+# Read input
+n = int(input())
+nums = list(map(int, input().split()))
+
+# Calculate the maximum subarray sum
+result = max_subarray_sum(nums)
+
+# Print the result
+print(result)
