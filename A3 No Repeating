@@ -1,0 +1,32 @@
+def longest_substring_without_repeating_characters(s):
+    # Initialize variables
+    n = len(s)
+    start = 0
+    max_length = 0
+    char_map = {}
+
+    # Iterate through the string
+    for i in range(n):
+        # Check if the current character is already seen
+        if s[i] in char_map:
+            # Update the start position of the substring
+            # to the next position of the repeated character
+            start = max(start, char_map[s[i]] + 1)
+
+        # Update the character's position in the map
+        char_map[s[i]] = i
+
+        # Update the maximum length of the substring
+        max_length = max(max_length, i - start + 1)
+
+    return max_length
+
+# Read input
+n = int(input())
+s = input()
+
+# Calculate the length of the longest substring without repeating characters
+result = longest_substring_without_repeating_characters(s)
+
+# Print the result
+print(result)
